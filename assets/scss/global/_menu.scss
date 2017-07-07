@@ -1,0 +1,21 @@
+ul {
+    &.menu {
+        background-color: cadetblue;
+
+        li {
+            list-style-type: none;
+            display: inline-flex;
+            margin-left: 20px;
+
+            &:first-child {
+                margin-left: 0;
+            }
+
+            a {
+                color: #ffffff;
+                background-color: brown;
+                padding: 10px 20px;
+            }
+        }
+    }
+}

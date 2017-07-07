@@ -1,0 +1,15 @@
+this is bingo
+<div class="css-bingo" ng-controller="BingoController">
+    <div class="toolbar">
+        <select ng-options="item as item.label for item in bingo_grid_size track by item.value" ng-model="conf.grid_size_selected"></select>
+        <input type="button" value="Draw" ng-click="draw()" />
+    </div>
+    <div class="grid-canvas">
+        <div class="row" ng-repeat="row in rows">
+            <div class="col" ng-repeat="col in row.cols">
+                <span class="empty" ng-show="col.value == 0">--</span>
+                <span ng-show="col.value > 0">{{ col.value }}</span>
+            </div>
+        </div>
+    </div>
+</div>
