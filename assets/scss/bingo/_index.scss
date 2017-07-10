@@ -1,3 +1,23 @@
 .css-bingo {
+    .socket-status {
+        margin-bottom: 5px;
+        font-size: 14px;
 
+        div {
+            display: inline-block;
+            margin-left: 10px;
+            padding: 10px;
+
+            &:first-child {
+                margin-left: 0;
+            }
+
+            &.on {
+                background-color: yellowgreen;
+            }
+            &.off {
+                background-color: dimgrey;
+            }
+        }
+    }
 }

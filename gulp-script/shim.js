@@ -7,8 +7,5 @@ module.exports = {
         depends: {
             'jquery': '$'
         }
-    },
-    'lodash': {
-        exports: 'global:_'
     }
 };

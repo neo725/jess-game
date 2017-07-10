@@ -28,11 +28,32 @@ ul.menu {
 .toolbar {
   background-color: #999999;
   padding: 10px; }
+  .toolbar.my-turn {
+    background-color: darkcyan; }
+
+.css-bingo .socket-status {
+  margin-bottom: 5px;
+  font-size: 14px; }
+  .css-bingo .socket-status div {
+    display: inline-block;
+    margin-left: 10px;
+    padding: 10px; }
+    .css-bingo .socket-status div:first-child {
+      margin-left: 0; }
+    .css-bingo .socket-status div.on {
+      background-color: yellowgreen; }
+    .css-bingo .socket-status div.off {
+      background-color: dimgrey; }
 
 .grid-canvas {
   margin-top: 30px; }
+  .grid-canvas .grid-svg-canvas {
+    position: absolute;
+    opacity: 0.5;
+    pointer-events: none; }
   .grid-canvas .row {
-    margin-bottom: 10px; }
+    margin-bottom: 10px;
+    display: table; }
     .grid-canvas .row .col {
       font-family: 'Open Sans', source-han-sans-traditional, sans-serif;
       background-color: #ffffff;
@@ -45,5 +66,14 @@ ul.menu {
       margin-left: 10px; }
       .grid-canvas .row .col:first-child {
         margin-left: 0; }
+      .grid-canvas .row .col.clicked {
+        background-color: #ffff00; }
+      .grid-canvas .row .col.last-col {
+        border-color: coral; }
       .grid-canvas .row .col .empty {
         color: #dddddd; }
+  .grid-canvas .line-count {
+    font-size: 5em;
+    position: absolute;
+    right: 25px;
+    top: 170px; }

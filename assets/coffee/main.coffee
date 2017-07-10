@@ -1,4 +1,5 @@
-angular.module('jess-game', ['ngRoute'])
+angular.module('jess-game', ['ngRoute', 'btford.socket-io'])
+.factory('BingoSocket', require('./factory/bingo-socket-factory'))
 .controller('BingoController', require('./controller/bingo-controller'))
 .config([
     '$locationProvider', '$routeProvider',

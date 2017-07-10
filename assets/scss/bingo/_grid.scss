@@ -1,8 +1,16 @@
 .grid-canvas {
     margin-top: 30px;
 
+    .grid-svg-canvas {
+        //background-color: azure;
+        position: absolute;
+        opacity: 0.5;
+        pointer-events: none;
+    }
+
     .row {
         margin-bottom: 10px;
+        display: table;
 
         .col {
             font-family: 'Open Sans', source-han-sans-traditional, sans-serif;
@@ -19,9 +27,24 @@
                 margin-left: 0;
             }
 
+            &.clicked {
+                background-color: #ffff00;
+            }
+
+            &.last-col {
+                border-color: coral;
+            }
+
             .empty {
                 color: #dddddd;
             }
         }
+    }
+
+    .line-count {
+        font-size: 5em;
+        position: absolute;
+        right: 25px;
+        top: 170px;
     }
 }

@@ -1,15 +1,34 @@
 this is bingo
 <div class="css-bingo" ng-controller="BingoController">
-    <div class="toolbar">
+    <div class="socket-status">
+        <div>Socket Status : </div>
+        <div class="on" ng-show="socket_status.connected == 'ON'">Connect ON</div>
+        <div class="off" ng-show="socket_status.connected == 'OFF'">Connect OFF</div>
+    </div>
+    <div class="toolbar" ng-show="step == ''">
         <select ng-options="item as item.label for item in bingo_grid_size track by item.value" ng-model="conf.grid_size_selected"></select>
         <input type="button" value="Draw" ng-click="draw()" />
+        <input type="number" ng-model="conf.room_id" ng-show="socket_status.connected == 'ON'" />
+        <input type="button" value="Join" ng-click="join()" ng-show="socket_status.connected == 'ON'" />
+    </div>
+    <div class="toolbar" ng-show="step == 'step-play'" ng-class="{ 'my-turn': my_turn == true }">
+        <input type="number" ng-model="conf.find_number" />
+        <input type="button" value="Find" ng-click="findNumber()" />
+        <span>{{ room_id }}</span>
     </div>
     <div class="grid-canvas">
+        <div id="grid-svg-canvas" class="grid-svg-canvas"></div>
         <div class="row" ng-repeat="row in rows">
-            <div class="col" ng-repeat="col in row.cols">
+            <div class="col"
+                 ng-class="{ 'clicked': col.clicked, 'last-col': col == last_col }"
+                 ng-repeat="col in row.cols"
+                 ng-click="clickNumber(col)">
                 <span class="empty" ng-show="col.value == 0">--</span>
                 <span ng-show="col.value > 0">{{ col.value }}</span>
             </div>
+        </div>
+        <div class="line-count" ng-show="rows.length > 0">
+            {{ lines.length }}
         </div>
     </div>
 </div>
