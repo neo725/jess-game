@@ -30,6 +30,12 @@ ul.menu {
   padding: 10px; }
   .toolbar.my-turn {
     background-color: darkcyan; }
+  .toolbar .right {
+    float: right; }
+  .toolbar .buttons a.button {
+    text-decoration: none; }
+    .toolbar .buttons a.button .image {
+      width: 32px; }
 
 .socket-status {
   margin-bottom: 5px;
@@ -45,21 +51,6 @@ ul.menu {
     .socket-status div.off {
       background-color: dimgrey; }
 
-.css-1a2b .guess-zone {
-  display: -webkit-flex;
-  display: flex; }
-  .css-1a2b .guess-zone .left-side {
-    padding: 10px;
-    background-color: #FAFAD2;
-    width: 50%; }
-  .css-1a2b .guess-zone .right-side {
-    padding: 10px;
-    background-color: #B2EFFF;
-    width: 50%;
-    padding-left: 10px; }
-    .css-1a2b .guess-zone .right-side .disabled {
-      color: #cccccc; }
-
 .grid-canvas {
   margin-top: 30px; }
   .grid-canvas .grid-svg-canvas {
@@ -74,6 +65,9 @@ ul.menu {
   .grid-canvas .row {
     margin-bottom: 10px;
     display: table; }
+    .grid-canvas .row.center {
+      margin-left: auto;
+      margin-right: auto; }
     .grid-canvas .row .col {
       font-family: 'Open Sans', source-han-sans-traditional, sans-serif;
       background-color: #ffffff;
@@ -104,3 +98,41 @@ ul.menu {
 
 .guess-zone .grid-canvas {
   margin-top: 10px; }
+
+.css-1a2b .guess-zone {
+  display: -webkit-flex;
+  display: flex; }
+  .css-1a2b .guess-zone .left-side {
+    padding: 10px;
+    background-color: #FAFAD2;
+    width: 50%; }
+  .css-1a2b .guess-zone .right-side {
+    padding: 10px;
+    background-color: #B2EFFF;
+    width: 50%;
+    padding-left: 10px; }
+    .css-1a2b .guess-zone .right-side .disabled {
+      color: #cccccc; }
+
+.css-1a2b {
+  padding-bottom: 180px; }
+  .css-1a2b .tool-panel {
+    background-color: #ffffff;
+    padding: 5px;
+    position: fixed;
+    left: 5px;
+    right: 5px;
+    bottom: 5px;
+    display: flex; }
+  .css-1a2b .color-map .color-a {
+    background-color: deeppink; }
+  .css-1a2b .color-map .color-b {
+    background-color: coral;
+    color: black; }
+  .css-1a2b .color-map .color-x {
+    background-color: #555555;
+    color: white; }
+  .css-1a2b .color-map .color-empty {
+    color: transparent; }
+  .css-1a2b .color-map .selected {
+    border-color: dodgerblue; }

@@ -35,6 +35,10 @@
         margin-bottom: 10px;
         display: table;
 
+        &.center {
+            margin-left: auto;
+            margin-right: auto;
+        }
         .col {
             font-family: 'Open Sans', source-han-sans-traditional, sans-serif;
             background-color: #ffffff;

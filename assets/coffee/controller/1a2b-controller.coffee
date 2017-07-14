@@ -20,9 +20,26 @@ module.exports = [
 
         $scope.guess_number_size = constants.guess_number_size
 
+        $scope.map = [
+            [1, 2, 3, 4, 5],
+            [6, 7, 8, 9, 0]
+        ]
+
+        $scope.current_tag = ''
+        $scope.number_map = []
+
+        do () ->
+            i = 0
+            while i < 10
+                $scope.number_map.push {
+                    number: i,
+                    tag: ''
+                }
+                i++
+
         socket1a2b.on('connect', () ->
             $scope.socket_status.connected = 'ON'
-
+            $scope.conf.room_id = 52188
 
             connectionNotReady = () ->
                 socket1a2b.removeListener('receive-user-guid')
@@ -111,6 +128,7 @@ module.exports = [
             )
 
             socket1a2b.on('guess-number-result', (data) ->
+                $log.info data
                 $scope.your_guesses.push (data)
 
                 if data.a > 0 and data.b == 0 and data.a == $scope.count
@@ -172,6 +190,11 @@ module.exports = [
         $scope.join = () ->
             room_id = $scope.conf.room_id
             socket1a2b.emit('join-room', { id: room_id })
+#            sample_data = { a: 0, b: 0, cols: [1, 2, 3, 4], room_id: 48080 }
+#            i = 0
+#            while i < 30
+#                $scope.your_guesses.push angular.copy sample_data
+#                i++
 
         $scope.sendMyNumber = () ->
             number = $scope.conf.my_number
@@ -185,4 +208,26 @@ module.exports = [
             $scope.my_turn = false
             $scope.conf.my_number = ''
             socket1a2b.emit('send-guess-number', { room_id: $scope.room_id, value: number })
+
+        $scope.setTag = (tag) ->
+            $scope.current_tag = tag
+
+        $scope.setColorTag = (number) ->
+            i = 0
+            while i < 10
+                if $scope.number_map[i].number == number
+                    if $scope.number_map[i].tag == $scope.current_tag
+                        $scope.number_map[i].tag = ''
+                    else
+                        $scope.number_map[i].tag = $scope.current_tag
+                    break
+                i++
+
+        $scope.checkTag = (number, tag) ->
+            i = 0
+            while i < 10
+                item = $scope.number_map[i]
+                if item.number == number
+                    return item.tag == tag
+                i++
 ]

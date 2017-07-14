@@ -1,3 +1,36 @@
 .css-1a2b {
+    padding-bottom: 180px;
 
+    .tool-panel {
+        background-color: #ffffff;
+        padding: 5px;
+
+        position: fixed;
+        left: 5px;
+        right: 5px;
+        bottom: 5px;
+
+        display: flex;
+    }
+
+    .color-map {
+        .color-a {
+            background-color: deeppink;
+        }
+        .color-b {
+            background-color: coral;
+            color: black;
+        }
+        .color-x {
+            background-color: #555555;
+            color: white;
+        }
+        .color-empty {
+            color: transparent;
+        }
+
+        .selected {
+            border-color: dodgerblue;
+        }
+    }
 }

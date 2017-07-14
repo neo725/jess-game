@@ -14,8 +14,48 @@ this is 1a2b
     </div>
     <div class="toolbar" ng-show="step == 'step-play'" ng-class="{ 'my-turn': my_turn == true }">
         <span>{{ room_id }}</span>
+        <div class="right buttons">
+            <a class="button" href="javascript:void(0);">
+                <img class="image" src="images/icon-colormap.png" />
+            </a>
+            <a class="button" href="javascript:void(0);" ng-hide="true">
+                <img class="image" src="images/icon-new-game.png" />
+            </a>
+        </div>
     </div>
     <div class="guess-zone" ng-if="step == 'step-play'">
+        <div class="tool-panel">
+            <div class="left-side">
+                <div class="grid-canvas color-map">
+                    <div class="row center">
+                        <div class="col color-a" ng-class="{ 'selected': current_tag == 'a' }" ng-click="setTag('a')">
+                            A
+                        </div>
+                        <div class="col color-b" ng-class="{ 'selected': current_tag == 'b' }" ng-click="setTag('b')">
+                            B
+                        </div>
+                        <div class="col color-x" ng-class="{ 'selected': current_tag == 'x' }" ng-click="setTag('x')">
+                            X
+                        </div>
+                        <div class="col color-empty" ng-class="{ 'selected': current_tag == '' }" ng-click="setTag('')">
+                            ＿
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="right-side">
+                <div class="grid-canvas color-map">
+                    <div class="row" ng-repeat="row in map">
+                        <div class="col"
+                             ng-repeat="col in row"
+                             ng-click="setColorTag(col)"
+                             ng-class="{ 'color-a': checkTag(col, 'a'), 'color-b': checkTag(col, 'b'), 'color-x': checkTag(col, 'x') }">
+                            {{ col }}
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
         <div class="left-side">
             <div>你的數字</div>
             <div class="grid-canvas grid-answer-guess">
@@ -37,9 +77,11 @@ this is 1a2b
         </div>
         <div class="right-side">
             <div>你猜對方的數字</div>
-            <div class="grid-canvas grid-your-guess">
+            <div class="grid-canvas grid-your-guess color-map">
                 <div class="row" ng-repeat="item in your_guesses">
-                    <div class="col" ng-repeat="col in item.cols">{{ col }}</div>
+                    <div class="col"
+                         ng-repeat="col in item.cols"
+                         ng-class="{ 'color-a': checkTag(col, 'a'), 'color-b': checkTag(col, 'b'), 'color-x': checkTag(col, 'x') }">{{ col }}</div>
                     <div class="col-tips">
                         <span ng-if="item.a == 0 && item.b == 0">0</span>
                         <span ng-if="item.a < count && !(item.a == 0 && item.b == 0)">{{ item.a }}A{{ item.b }}B</span>
