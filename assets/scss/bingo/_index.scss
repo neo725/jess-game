@@ -1,22 +1,23 @@
-.css-bingo {
-    .socket-status {
-        margin-bottom: 5px;
-        font-size: 14px;
+.css-1a2b {
+    .guess-zone {
+        //padding: 10px;
+        //background-color: chartreuse;
+        display: -webkit-flex;
+        display: flex;
 
-        div {
-            display: inline-block;
-            margin-left: 10px;
+        .left-side {
             padding: 10px;
+            background-color: #FAFAD2;
+            width: 50%;
+        }
+        .right-side {
+            padding: 10px;
+            background-color: #B2EFFF;
+            width: 50%;
+            padding-left: 10px;
 
-            &:first-child {
-                margin-left: 0;
-            }
-
-            &.on {
-                background-color: yellowgreen;
-            }
-            &.off {
-                background-color: dimgrey;
+            .disabled {
+                color: #cccccc;
             }
         }
     }

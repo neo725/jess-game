@@ -31,19 +31,34 @@ ul.menu {
   .toolbar.my-turn {
     background-color: darkcyan; }
 
-.css-bingo .socket-status {
+.socket-status {
   margin-bottom: 5px;
   font-size: 14px; }
-  .css-bingo .socket-status div {
+  .socket-status div {
     display: inline-block;
     margin-left: 10px;
     padding: 10px; }
-    .css-bingo .socket-status div:first-child {
+    .socket-status div:first-child {
       margin-left: 0; }
-    .css-bingo .socket-status div.on {
+    .socket-status div.on {
       background-color: yellowgreen; }
-    .css-bingo .socket-status div.off {
+    .socket-status div.off {
       background-color: dimgrey; }
+
+.css-1a2b .guess-zone {
+  display: -webkit-flex;
+  display: flex; }
+  .css-1a2b .guess-zone .left-side {
+    padding: 10px;
+    background-color: #FAFAD2;
+    width: 50%; }
+  .css-1a2b .guess-zone .right-side {
+    padding: 10px;
+    background-color: #B2EFFF;
+    width: 50%;
+    padding-left: 10px; }
+    .css-1a2b .guess-zone .right-side .disabled {
+      color: #cccccc; }
 
 .grid-canvas {
   margin-top: 30px; }
@@ -51,6 +66,11 @@ ul.menu {
     position: absolute;
     opacity: 0.5;
     pointer-events: none; }
+  .grid-canvas.grid-answer-guess .row .col {
+    border-color: #FF4500; }
+  .grid-canvas.grid-else-guess .row .col {
+    border-color: #dddddd;
+    color: #999999; }
   .grid-canvas .row {
     margin-bottom: 10px;
     display: table; }
@@ -72,8 +92,15 @@ ul.menu {
         border-color: coral; }
       .grid-canvas .row .col .empty {
         color: #dddddd; }
+    .grid-canvas .row .col-tips {
+      font-family: 'Open Sans', source-han-sans-traditional, sans-serif;
+      display: inline-block;
+      margin-left: 10px; }
   .grid-canvas .line-count {
     font-size: 5em;
     position: absolute;
     right: 25px;
     top: 170px; }
+
+.guess-zone .grid-canvas {
+  margin-top: 10px; }

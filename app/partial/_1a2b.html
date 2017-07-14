@@ -1,4 +1,59 @@
 this is 1a2b
-<div class="css-1a2b">
-
+<div class="css-1a2b" ng-controller="1a2bController">
+    <div class="socket-status">
+        <div>Socket Status : </div>
+        <div class="on" ng-show="socket_status.connected == 'ON'">Connect ON</div>
+        <div class="off" ng-show="socket_status.connected == 'OFF'">Connect OFF</div>
+    </div>
+    <div class="toolbar" ng-show="step == ''">
+        <select ng-options="item as item.label for item in guess_number_size track by item.value"
+                ng-model="conf.guess_number_size_selected"></select>
+        <input type="button" value="Draw" ng-click="draw()" />
+        <input type="number" ng-model="conf.room_id" ng-show="socket_status.connected == 'ON'" />
+        <input type="button" value="Join" ng-click="join()" ng-show="socket_status.connected == 'ON'" />
+    </div>
+    <div class="toolbar" ng-show="step == 'step-play'" ng-class="{ 'my-turn': my_turn == true }">
+        <span>{{ room_id }}</span>
+    </div>
+    <div class="guess-zone" ng-if="step == 'step-play'">
+        <div class="left-side">
+            <div>你的數字</div>
+            <div class="grid-canvas grid-answer-guess">
+                <div class="row">
+                    <div class="col" ng-repeat="col in answer">{{ col.value }}</div>
+                </div>
+            </div>
+            <div>對方猜你的數字</div>
+            <div class="grid-canvas grid-else-guess">
+                <div class="row" ng-repeat="item in else_guesses">
+                    <div class="col" ng-repeat="col in item.cols">{{ col }}</div>
+                    <div class="col-tips">
+                        <span ng-if="item.a == 0 && item.b == 0">0</span>
+                        <span ng-if="item.a < count && !(item.a == 0 && item.b == 0)">{{ item.a }}A{{ item.b }}B</span>
+                        <span ng-if="item.a > 0 && item.a == count">{{ item.a }}A</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="right-side">
+            <div>你猜對方的數字</div>
+            <div class="grid-canvas grid-your-guess">
+                <div class="row" ng-repeat="item in your_guesses">
+                    <div class="col" ng-repeat="col in item.cols">{{ col }}</div>
+                    <div class="col-tips">
+                        <span ng-if="item.a == 0 && item.b == 0">0</span>
+                        <span ng-if="item.a < count && !(item.a == 0 && item.b == 0)">{{ item.a }}A{{ item.b }}B</span>
+                        <span ng-if="item.a > 0 && item.a == count">{{ item.a }}A</span>
+                    </div>
+                </div>
+                <div class="row">
+                    <input type="tel" placeholder="{{ '請輸入 ' + count + ' 位數字' }}" ng-model="conf.my_number" />
+                    <input type="button" value="送出"
+                           ng-class="{ 'disabled': !my_turn }"
+                           ng-disabled="!my_turn"
+                           ng-click="sendMyNumber()" />
+                </div>
+            </div>
+        </div>
+    </div>
 </div>

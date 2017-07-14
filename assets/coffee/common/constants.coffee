@@ -9,6 +9,16 @@ module.exports = () ->
         }
         i++
 
+    guess_number_size = []
+    i = 4
+    while i < 7
+        guess_number_size.push {
+            label: i,
+            value: i
+        }
+        i++
+
     return {
         bingo_grid_size: bingo_grid_size
+        guess_number_size: guess_number_size
     }

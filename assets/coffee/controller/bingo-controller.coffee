@@ -2,11 +2,20 @@ constants = require('../common/constants')()
 util = require('../common/util')
 
 module.exports = [
-    '$scope', '$log', 'BingoSocket'
+    '$scope', '$log', 'BingoSocket',
     ($scope, $log, BingoSocket) ->
         $scope.socket_status = {
             connected: 'OFF'
         }
+        $scope.conf = {}
+        $scope.rows = []
+        $scope.step = ''
+        $scope.my_turn = false
+
+        col_width = 30 + (5 * 2) + (3 * 2)
+        space_width = 10
+
+        $scope.bingo_grid_size = constants.bingo_grid_size
 
         BingoSocket.on('connect', () ->
             $scope.socket_status.connected = 'ON'
@@ -70,22 +79,7 @@ module.exports = [
                 setTimeout(checkConnected, 1000)
 
             checkConnected()
-#            BingoSocket.emit('join', 'Hello world from client')
-#
-#            BingoSocket.on('messages', (data) ->
-#                $log.info data
-#            )
         );
-
-        $scope.conf = {}
-        $scope.rows = []
-        $scope.step = ''
-        $scope.my_turn = false
-
-        col_width = 30 + (5 * 2) + (3 * 2)
-        space_width = 10
-
-        $scope.bingo_grid_size = constants.bingo_grid_size
 
         $scope.draw = (create_room = true) ->
             numbers = []
